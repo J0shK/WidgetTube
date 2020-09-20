@@ -1,0 +1,17 @@
+# references:
+# * https://www.objc.io/issues/6-build-tools/travis-ci/
+# * https://github.com/supermarin/xcpretty#usage
+
+language: objective-c
+osx_image: xcode12.2
+xcode_workspace: WidgetTube.xcworkspace
+xcode_scheme: WidgetTube
+xcode_destination: platform=iOS Simulator,OS=14.2,name=iPhone 11
+cache: cocoapods
+podfile: Podfile
+before_install:
+- gem install cocoapods # Since Travis is not always on latest version
+- pod install
+install:
+- ./Scripts/generate_secrets.sh
+
